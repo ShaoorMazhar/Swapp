@@ -1,24 +1,24 @@
-import React, { useState } from "react";
-import { DataGrid } from "@mui/x-data-grid";
-import { Grid } from "@mui/material";
-import Button from "@mui/material/Button";
-import DenseAppBar from "./AppBar";
+import React, { useState } from 'react'
+import { DataGrid } from '@mui/x-data-grid'
+import { Grid } from '@mui/material'
+import Button from '@mui/material/Button'
+import DenseAppBar from './AppBar'
 
 const columns = [
-  { field: "name", headerName: "Name", width: 130 },
+  { field: 'name', headerName: 'Name', width: 130 },
   {
-    field: "amount",
-    headerName: "Amount",
-    type: "number",
-    width: 90,
-  },
-];
+    field: 'amount',
+    headerName: 'Amount',
+    type: 'number',
+    width: 90
+  }
+]
 
 export default function Table({
   tableRowsData,
   selectedRowIds,
   setSelectedRowsIds,
-  onGeneratePdf,
+  onGeneratePdf
 }) {
   return (
     <>
@@ -27,26 +27,27 @@ export default function Table({
         item
         xs={12}
         sx={{
-          height: "90vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          marginTop: '100px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
         }}
       >
-        <div style={{ height: 318, width: "20rem" }}>
+        <div style={{ height: 318, width: '20rem' }}>
           <DataGrid
             hideFooter
             rows={tableRowsData}
             columns={columns}
             checkboxSelection
+            selectionModel={selectedRowIds}
             onSelectionModelChange={(ids) => {
-              setSelectedRowsIds(ids);
+              setSelectedRowsIds(ids)
             }}
           />
           <Button
             disabled={selectedRowIds?.length === 0}
-            sx={{ marginTop: "20px", float: "right" }}
-            variant="contained"
+            sx={{ marginTop: '20px' }}
+            variant='contained'
             onClick={onGeneratePdf}
           >
             Generate Invoice
@@ -54,5 +55,5 @@ export default function Table({
         </div>
       </Grid>
     </>
-  );
+  )
 }
