@@ -4,6 +4,7 @@ import { generatePdf, getTableData } from "../services/tableDataServices";
 export default function TableContainer() {
   const [tableRowsData, setTableRowsData] = useState([]);
   const [selectedRowIds, setSelectedRowsIds] = useState([]);
+
   const fetchTableData = async () => {
     const tableData = await getTableData();
 
